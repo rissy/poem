@@ -1,0 +1,29 @@
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-size: 1.25rem;
+}
+
+::selection {
+    background-color: var(--special-bg-color);
+}
+
+.poem-wrapper {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.poem {
+    display: inline-block;
+    width: auto;
+    text-align-last: left;
+}
+
+.author {
+    margin-top: 2.5rem;
+    font-size: 1rem;
+    color: var(--special-color);
+}
