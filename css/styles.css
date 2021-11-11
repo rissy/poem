@@ -19,7 +19,7 @@ body {
 .poem {
     display: inline-block;
     width: auto;
-    text-align-last: left;
+    text-align: left;
 }
 
 .author {
