@@ -5,7 +5,7 @@
 async function getNum() {
     return await fetch('settings/config.json')
         .then(cfg => cfg.json())
-        .then(cfg => Math.round(Math.random() * (cfg.amount - 1)));
+        .then(cfg => Math.floor(Math.random() * cfg.amount));
 }
 
 function add(num) {
@@ -13,7 +13,7 @@ function add(num) {
         .then(poem => poem.json())
         .then(poem => {
             const block = document.querySelector('.poem');
-            
+
             addPoem(block, poem);
             addAuthor(block, poem);
         });
