@@ -1,5 +1,5 @@
 (async function () {
-    addPoem(await getNum());
+    add(await getNum());
 })();
 
 async function getNum() {
@@ -8,30 +8,37 @@ async function getNum() {
         .then(cfg => Math.round(Math.random() * (cfg.amount - 1)));
 }
 
-function addPoem(num) {
-    const poemBlock = document.querySelector('.poem');
-
+function add(num) {
     fetch(`poems/${num}.json`)
         .then(poem => poem.json())
         .then(poem => {
-            poem.content.forEach(block => {
-                const p = document.createElement('p');
-                let text = '';
-    
-                block.forEach(str => {
-                    text += str + '<br>' + '\n'; 
-                });
-    
-                p.innerHTML = text;
-    
-                poemBlock.appendChild(p);
-            });
-    
-            const p = document.createElement('p');
-    
-            p.innerHTML = poem.author;
-            p.className = 'author';
-    
-            poemBlock.appendChild(p);
+            const block = document.querySelector('.poem');
+            
+            addPoem(block, poem);
+            addAuthor(block, poem);
         });
+}
+
+function addPoem(block, {content}) {
+    content.forEach(stanza => {
+        const p = document.createElement('p');
+        let text = '';
+
+        stanza.forEach(str => {
+            text += str + '<br>' + '\n'; 
+        });
+
+        p.innerHTML = text;
+
+        block.appendChild(p);
+    });
+}
+
+function addAuthor(block, {author}) {
+    const p = document.createElement('p');
+    
+    p.innerHTML = author;
+    p.className = 'author';
+
+    block.appendChild(p);
 }
