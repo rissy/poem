@@ -20,6 +20,7 @@ body {
     display: inline-block;
     width: auto;
     text-align: left;
+    white-space: nowrap;
 }
 
 .author {
